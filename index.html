@@ -1,608 +1,1835 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Diamond Real Estate · premium estates</title>
+  <style>
+    /* reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
 
-  <head>
+    body {
+      background: #0b0c10;
+      color: #e0e0e0;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 2rem;
+      flex: 1;
+      width: 100%;
+    }
 
-    <title>Black Diamond Real Estate LLC</title>
+    /* ----- header with navigation ----- */
+    .site-header {
+      background: #0f151b;
+      border-bottom: 2px solid #283a44;
+      padding: 0.8rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.8);
+    }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-villa-agency.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/animate.css">
-    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    .diamond-big {
+      color: #a0d0ff;
+      font-size: 2.2rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 8px #2f7ca0);
+      transform: rotate(0deg);
+      display: inline-block;
+    }
 
-<!--
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 300;
+      letter-spacing: 2.5px;
+    }
 
-TemplateMo 591 villa agency
+    .logo-text span {
+      background: #1f3e4b;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      margin-left: 0.5rem;
+      color: #bae0ff;
+      border: 1px solid #3e6b80;
+    }
 
-https://templatemo.com/tm-591-villa-agency
+    .main-nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
 
--->
-  </head>
+    .main-nav a {
+      color: #b8cfde;
+      text-decoration: none;
+      font-weight: 400;
+      letter-spacing: 0.4px;
+      font-size: 1rem;
+      transition: 0.2s;
+      border-bottom: 1px solid transparent;
+      padding-bottom: 4px;
+    }
 
+    .main-nav a:hover {
+      color: white;
+      border-bottom-color: #6fafd4;
+    }
+
+    .contact-phone {
+      background: #1b313d;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      border: 1px solid #4a7a94;
+      color: #dbf0ff;
+    }
+
+    /* HERO SECTION STYLES */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      min-height: 90vh;
+      background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2075&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 3rem;
+      border-radius: 0 0 40px 40px;
+      overflow: hidden;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,20,40,0.75) 50%, rgba(0,40,70,0.6) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 2rem;
+      text-align: center;
+      color: white;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(5px);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      border: 1px solid rgba(255,255,255,0.2);
+      margin-bottom: 2rem;
+      color: #aad0ff;
+      font-weight: 500;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-highlight {
+      background: linear-gradient(135deg, #c3e0ff, #70b8ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 8px;
+      background: rgba(100, 180, 255, 0.3);
+      border-radius: 10px;
+      z-index: -1;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 4vw, 1.3rem);
+      color: rgba(255,255,255,0.8);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .hero-btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-btn.primary {
+      background: linear-gradient(135deg, #2a6b9c, #1e4b70);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+
+    .hero-btn.primary:hover {
+      background: linear-gradient(135deg, #347fb8, #256396);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0,120,255,0.3);
+    }
+
+    .hero-btn.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255,255,255,0.5);
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-btn.secondary:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: white;
+      transform: translateY(-3px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      padding: 2rem 0;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff, #b0d9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      cursor: pointer;
+    }
+
+    .hero-scroll-indicator:hover {
+      opacity: 1;
+    }
+
+    .hero-scroll-indicator span {
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+      font-size: 1.5rem;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+
+    /* ----- moving frame strip ----- */
+    .frame-strip {
+      width: 100%;
+      overflow: hidden;
+      background: #12161b;
+      border-radius: 20px;
+      border: 1px solid #2c3842;
+      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.8);
+      margin-bottom: 3rem;
+      padding: 1.2rem 0;
+    }
+
+    .frame-track {
+      display: flex;
+      gap: 2rem;
+      width: fit-content;
+      animation: scrollFrame 22s linear infinite;
+    }
+
+    .frame-track img {
+      height: 100px;
+      width: auto;
+      border-radius: 12px;
+      border: 2px solid #3f5562;
+      background: #1b232b;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+      transition: border-color 0.2s;
+    }
+
+    .frame-track img:hover {
+      border-color: #8bb9d1;
+    }
+
+    @keyframes scrollFrame {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ----- our properties section ----- */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #fff;
+      border-left: 5px solid #608aa3;
+      padding-left: 1rem;
+      background: linear-gradient(90deg, #1f2b33 0%, transparent 100%);
+    }
+
+    .click-badge {
+      background: #263842;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid #46758b;
+      font-size: 0.95rem;
+      color: #cbe5f5;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .click-badge:hover {
+      background: #2f4858;
+      border-color: #7da5c2;
+      color: white;
+      box-shadow: 0 0 10px #2b5a74;
+    }
+
+    /* ----- property grid : 3 per row ----- */
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* card with relative for whatsapp link */
+    .property-card {
+      background: #171e24;
+      border-radius: 24px;
+      border: 1px solid #2f3f4b;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.3s, border-color 0.2s;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .property-card:hover {
+      transform: translateY(-6px);
+      border-color: #608894;
+      box-shadow: 0 20px 28px -8px #03080e;
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      background: #1d2a32;
+      display: block;
+      border-bottom: 2px solid #2f4d5c;
+    }
+
+    /* whatsapp icon overlay on image */
+    .whatsapp-overlay {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      border-radius: 50px;
+      padding: 6px 12px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #40c351;
+      color: white;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: 0.2s;
+      z-index: 2;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+
+    .whatsapp-overlay:hover {
+      background: #1ebea5;
+      border-color: #ffffff;
+      transform: scale(1.05);
+    }
+
+    .whatsapp-overlay svg {
+      width: 18px;
+      height: 18px;
+      fill: white;
+    }
+
+    .card-content {
+      padding: 1.2rem 1rem 1.5rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #d8ecff;
+      margin-bottom: 0.4rem;
+    }
+
+    .price {
+      color: #b3d9f0;
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.5px;
+    }
+
+    .address {
+      color: #8d9ca8;
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0.8rem;
+      border-left: 2px solid #3e697c;
+      padding-left: 0.6rem;
+    }
+
+    .view-btn {
+      background: transparent;
+      border: 1px solid #507888;
+      color: #cde3f0;
+      padding: 0.4rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .view-btn:hover {
+      background: #27495b;
+      border-color: #8eb9cf;
+      color: white;
+    }
+
+    /* extra images panel (click to show) */
+    .extra-images-panel {
+      display: none;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 0.5rem;
+    }
+
+    .extra-images-panel.show-extra {
+      display: grid;
+    }
+
+    .extra-card {
+      background: #131e26;
+      border-radius: 16px;
+      border: 1px solid #2f4957;
+      padding: 0.6rem;
+      transition: 0.2s;
+      position: relative;
+    }
+
+    .extra-card img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 1px solid #40667a;
+    }
+
+    .extra-card p {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #b2ccdd;
+      margin-top: 0.3rem;
+    }
+
+    /* small whatsapp on extra cards */
+    .extra-wa {
+      position: absolute;
+      bottom: 35px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 30px;
+      padding: 3px 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      color: white;
+      text-decoration: none;
+      border: 1px solid #2e9c4a;
+      backdrop-filter: blur(2px);
+    }
+
+    .extra-wa svg {
+      width: 14px;
+      height: 14px;
+      fill: #fff;
+    }
+
+    /* click message */
+    .click-message {
+      display: none;
+      background: #16232e;
+      border: 1px solid #436d84;
+      color: #cae2f0;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .click-message.show-message {
+      display: flex;
+    }
+	  /* ----- CLIENTS PAGE STYLES ----- */
+    .clients-hero {
+      text-align: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .testimonial-card {
+      background: #171e24;
+      border: 1px solid #283a44;
+      padding: 2.5rem;
+      border-radius: 20px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: #608aa3;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .quote-icon {
+      font-size: 3rem;
+      color: #2a6b9c;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      opacity: 0.3;
+    }
+
+    .client-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-top: 2rem;
+    }
+
+    .client-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #3e6b80;
+    }
+
+    .client-info h4 {
+      color: #fff;
+      font-size: 1.1rem;
+    }
+
+    .client-info span {
+      color: #678696;
+      font-size: 0.85rem;
+    }
+
+    .logo-cloud {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: 4rem 0;
+      opacity: 0.6;
+      filter: grayscale(1);
+    }
+
+    .logo-cloud img {
+      height: 40px;
+      transition: 0.3s;
+    }
+
+    .logo-cloud img:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+	
+	/* Gallery Modal */
+.gallery-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.95);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-modal.show {
+  display: flex;
+}
+
+.gallery-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.gallery-image {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 10px;
+  border: 2px solid #608aa3;
+}
+
+.gallery-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  background: #1f3e4b;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #608aa3;
+}
+
+.gallery-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1f3e4b;
+  color: white;
+  border: 1px solid #608aa3;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+}
+
+.gallery-nav:hover {
+  background: #2a6b9c;
+}
+
+.gallery-prev {
+  left: -70px;
+}
+
+.gallery-next {
+  right: -70px;
+}
+
+.gallery-counter {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background: #1f3e4b;
+  padding: 5px 15px;
+  border-radius: 20px;
+  border: 1px solid #608aa3;
+}
+
+@media (max-width: 768px) {
+  .gallery-prev { left: -25px; }
+  .gallery-next { right: -25px; }
+  .gallery-nav { width: 35px; height: 35px; font-size: 18px; }
+}
+
+    /* ----- FIXED MAP SECTION (MODERN DUAL LAYOUT) ----- */
+    .map-section {
+      background: #0f151b;
+      padding: 4rem 0;
+      border-top: 2px solid #1f3540;
+      border-bottom: 2px solid #1f3540;
+      margin-top: 2rem;
+    }
+
+    .map-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      align-items: center;
+      background: #131e26;
+      border-radius: 32px;
+      border: 1px solid #2f4957;
+      overflow: hidden;
+      box-shadow: 0 25px 40px -12px #000;
+    }
+
+    .map-info {
+      flex: 1 1 300px;
+      padding: 3rem 2rem;
+    }
+
+    .map-info h2 {
+      font-size: 2.3rem;
+      color: white;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      margin-bottom: 2rem;
+      border-left: 5px solid #608aa3;
+      padding-left: 1.2rem;
+    }
+
+    .map-details {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .map-details div {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: #c2d6e8;
+      font-size: 1.1rem;
+      border-bottom: 1px dashed #2d4b5e;
+      padding-bottom: 0.7rem;
+    }
+
+    .map-details span {
+      font-size: 1.4rem;
+      min-width: 40px;
+    }
+
+    .map-frame {
+      flex: 1 1 400px;
+      height: 380px;
+      background: #1d2c36;
+    }
+
+    .google-map {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      filter: grayscale(0.2) contrast(1.1) brightness(0.7);
+      transition: 0.3s;
+    }
+
+    .google-map:hover {
+      filter: grayscale(0) contrast(1.1) brightness(0.9);
+    }
+/* About Us Section */
+.about-section {
+  margin: 4rem 0;
+  background: linear-gradient(135deg, #0f151b 0%, #1a242d 100%);
+  border-radius: 40px;
+  padding: 3rem;
+  border: 1px solid #283a44;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-text h3 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  background: linear-gradient(135deg, #fff, #a0d0ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.about-text p {
+  color: #b0c4d9;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.03);
+  padding: 1rem;
+  border-radius: 16px;
+  border: 1px solid #283a44;
+  transition: 0.3s;
+}
+
+.feature-item:hover {
+  border-color: #608aa3;
+  transform: translateY(-3px);
+  background: rgba(96, 138, 163, 0.1);
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  color: #608aa3;
+}
+
+.feature-item h4 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.feature-item p {
+  color: #8d9ca8;
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.about-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  background: rgba(0,0,0,0.3);
+  padding: 2rem;
+  border-radius: 30px;
+  border: 1px solid #2f4957;
+}
+
+.about-stat-card {
+  text-align: center;
+  padding: 1.5rem 0.5rem;
+  background: #171e24;
+  border-radius: 20px;
+  border: 1px solid #3e6b80;
+  transition: 0.3s;
+}
+
+.about-stat-card:hover {
+  transform: scale(1.05);
+  border-color: #608aa3;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.about-stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff, #70b8ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.about-stat-label {
+  color: #8d9ca8;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Responsive for About section */
+@media (max-width: 1024px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .about-stats-grid {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+  
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+  
+  .about-text h3 {
+    font-size: 1.6rem;
+  }
+  
+  .about-stats-grid {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .about-stat-number {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+    /* ----- MODERN MEGA FOOTER ----- */
+    .site-footer {
+      background: linear-gradient(180deg, #0b0c10 0%, #05070a 100%);
+      border-top: 1px solid #1f3540;
+      padding: 5rem 1.5rem 2rem;
+      color: #adc4d6;
+      margin-top: 0;
+    }
+
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+      gap: 4rem;
+    }
+
+    .footer-brand .logo-text {
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .footer-brand p {
+      line-height: 1.8;
+      color: #8d9ca8;
+      margin-bottom: 2rem;
+    }
+
+    .footer-heading {
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .footer-heading::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 30px;
+      height: 2px;
+      background: #487a95;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: #8d9ca8;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: #608aa3;
+      padding-left: 8px;
+    }
+
+    .contact-info-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      color: #608aa3;
+      font-size: 1.2rem;
+    }
+
+    .contact-text h5 {
+      color: #fff;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-text p, .contact-text a {
+      color: #8d9ca8;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    /* Social Media Icons */
+    .social-stack {
+      display: flex;
+      gap: 12px;
+      margin-top: 1.5rem;
+    }
+
+    .social-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #171e24;
+      border: 1px solid #283a44;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .social-circle:hover {
+      background: #2a6b9c;
+      border-color: #608aa3;
+      transform: translateY(-3px);
+    }
+
+    .social-circle svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .bottom-bar {
+      max-width: 1280px;
+      margin: 4rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid #1f3540;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #678696;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 1024px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+	  .property-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .bottom-bar { flex-direction: column; gap: 1rem; text-align: center; }
+	  .property-grid {
+        grid-template-columns: 1fr;
+      }
+	  .extra-images-panel {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
+  <!-- header with navigation -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <span class="diamond-big">⬥</span>
+        <div class="logo-text">BLACK DIAMOND <span>REALTY</span></div>
       </div>
-    </div>
-  </div>
-  <!-- ***** Preloader End ***** -->
-
-  <div class="sub-header">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 col-md-8">
-          <ul class="info">
-            <li><i class="fa fa-envelope"></i> info@company.com</li>
-            <li><i class="fa fa-map"></i> Horizon Towers, Al Rashidiya 1 - Ajman</li>
-          </ul>
-        </div>
-        <div class="col-lg-4 col-md-4">
-          <ul class="social-links">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="https://x.com/minthu" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                      <img src="assets/images/logo.png" alt="Villa Logo" style="width: 175px; height: 175px;"  />
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                      <li><a href="index.html" class="active">Home</a></li>
-                      <li><a href="about.html">About Us</a></li>
-                      <li><a href="contact.html">Contact Us</a></li>
-                      <li>
-                        <a href="https://wa.me/971543612414" target="_blank">
-                          <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                        </a>
-                      </li>
-                      <li><a href="tel:+971543612414"><i class="fa fa-calendar"></i> Call To Schedule a visit</a></li>
-                  </ul>   
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
-            </div>
-        </div>
+      <nav class="main-nav">
+        <a href="#home">HOME</a>
+        <a href="#listings">LISTINGS</a>
+        <a href="#about">ABOUT</a>
+        <a href="#agents">AGENTS</a>
+        <a href="#contact">CONTACT</a>
+        <div class="contact-phone">📞 +971 054 361 2414</div>
+      </nav>
     </div>
   </header>
-  <!-- ***** Header Area End ***** -->
 
-  <div class="main-banner">
-    <div class="owl-carousel owl-banner">
-      <div class="item item-1">
-        <div class="header-text">
-          <span class="category">Ajman, <em>United Arab Emirates</em></span>
-          <h2>Hurry!<br>Get the Best Appartment for you</h2>
-        </div>
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tagline">PREMIUM PROPERTIES • EXCEPTIONAL SERVICE</span>
+      <h1 class="hero-title">
+        Find Your <span class="hero-highlight">Dream Home</span><br>
+        with Black Diamond
+      </h1>
+      <p class="hero-description">
+        Discover luxury estates, modern villas, and investment properties in prime locations. 
+        Your journey to exceptional living starts here.
+      </p>
+      <div class="hero-cta">
+        <a href="#listings" class="hero-btn primary">VIEW LISTINGS</a>
+        <a href="#contact" class="hero-btn secondary">CONTACT AGENT</a>
       </div>
-      <div class="item item-2">
-        <div class="header-text">
-          <span class="category">Ajman, <em>United Arab Emirates</em></span>
-          <h2>Be Quick!<br>Get the best villa in town</h2>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">150+</span>
+          <span class="stat-label">Luxury Properties</span>
         </div>
-      </div>
-      <div class="item item-3">
-        <div class="header-text">
-          <span class="category">Ajman, <em>United Arab Emirates</em></span>
-          <h2>Act Now!<br>Get the highest level penthouse</h2>
+        <div class="stat-item">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Expert Agents</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Happy Clients</span>
         </div>
       </div>
     </div>
-  </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll Down</span>
+      <div class="scroll-arrow">↓</div>
+    </div>
+  </section>
 
-  <div class="featured section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="left-image">
-            <img src="assets/images/featured.jpg" alt="">
-            <a href="tel:+971543612414"><img src="assets/images/featured-icon.png" alt="" style="max-width: 60px; padding: 0px;"></a>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <div class="section-heading">
-            <h6>| Featured</h6>
-            <h2>Best Appartment &amp; Sea view</h2>
-          </div>
-          <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  What are the key features?
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  This apartment offers <strong>3 spacious bedrooms</strong>, a <strong>fully equipped kitchen</strong>, <strong>floor-to-ceiling windows</strong>, and a <strong>panoramic sea view</strong>. It is located in a prime area close to top schools, malls, and public transport.</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  How does the buying process work?
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  After scheduling a visit, our agent will guide you through a smooth process—starting from the tour, document verification, to final agreement. Financing and legal support are available upon request.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                  Why choose this property?
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  This apartment is a rare find offering <strong>luxury, location, and lifestyle</strong> all in one. Managed by a top real estate agency with excellent after-sales service, it’s perfect for both investment and personal living.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="info-table">
-            <ul>
-              <li>
-                <img src="assets/images/info-icon-01.png" alt="" style="max-width: 52px;">
-                <h4>1,639 SQFT - 2 BHK (2 Bed, 3 Bathrooms)<br><span>Total Flat Space</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-02.png" alt="" style="max-width: 52px;">
-                <h4>Contract<br><span>Contract Ready</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-03.png" alt="" style="max-width: 52px;">
-                <h4>Payment<br><span>Payment Process</span></h4>
-              </li>
-              <li>
-                <img src="assets/images/info-icon-04.png" alt="" style="max-width: 52px;">
-                <h4>Safety<br><span>24/7 Under Control</span></h4>
-              </li>
-            </ul>
-          </div>
-        </div>
+  <!-- Main Content -->
+  <div class="container">
+    <!-- moving frame strip -->
+    <div class="frame-strip">
+      <div class="frame-track">
+        <img src="https://i.ibb.co/C5swccbx/1.jpg" alt="luxury">
+        <img src="https://i.ibb.co/sdbQLw8F/2.jpg" alt="modern">
+        <img src="https://i.ibb.co/7JnNLtQv/3.jpg" alt="mansion">
+        <img src="https://i.ibb.co/8g5kvKLf/4.jpg" alt="interior">
+        <img src="https://i.ibb.co/q3vS6mJc/6.jpg" alt="pool">
+        <img src="https://i.ibb.co/nqJYDDGV/5.jpg" alt="estate">
+        <img src="https://i.ibb.co/fdgHcXSt/7.jpg" alt="villa">
+        <img src="https://i.ibb.co/kVpmNGTX/8.jpg" alt="architecture">
+        <img src="https://i.ibb.co/fzCjmm52/9.jpg" alt="">
+        <img src="https://i.ibb.co/KzbrDVnf/10.jpg" alt="">
+        <img src="https://i.ibb.co/fdgHcXSt/7.jpg" alt="">
+        <img src="https://i.ibb.co/C5swccbx/1.jpg" alt="">
+        <img src="https://i.ibb.co/7JnNLtQv/3.jpg" alt="">
+        <img src="https://i.ibb.co/kVpmNGTX/8.jpg" alt="">
+        <img src="https://i.ibb.co/fdgHcXSt/7.jpg" alt="">
+        <img src="https://i.ibb.co/nqJYDDGV/5.jpg" alt="">
       </div>
     </div>
-  </div>
 
-  <div class="video section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-          <div class="section-heading text-center">
-            <h6>| Video View</h6>
-            <h2>Get Closer View & Different Feeling</h2>
-          </div>
-        </div>
+    <!-- ABOUT US SECTION -->
+    <section class="about-section" id="about">
+      <div class="section-title">
+        <h2>ABOUT BLACK DIAMOND</h2>
       </div>
-    </div>
-  </div>
-
-  <div class="video-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-10 offset-lg-1">
-          <div class="video-frame">
-            <img src="assets/images/video-frame.jpg" alt="">
-            <a href="https://youtube.com" target="_blank"><i class="fa fa-play"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="fun-facts">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="wrapper">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="26" data-speed="1000"></h2>
-                   <p class="count-text ">For Sales<br>Currently Available</p>
+      
+      <div class="about-container">
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Premier Real Estate Partner in Ajman</h3>
+            <p>Founded in 2015, Black Diamond Real Estate has established itself as the most trusted name in luxury property across Ajman and the Northern Emirates. We combine local market expertise with international standards of service.</p>
+            <p>Our team of 25+ expert agents brings decades of combined experience in luxury villas, waterfront apartments, and high-yield investment properties. We don't just sell homes – we curate lifestyles.</p>
+            
+            <div class="about-features">
+              <div class="feature-item">
+                <span class="feature-icon">🔷</span>
+                <div>
+                  <h4>Local Expertise</h4>
+                  <p>Deep knowledge of Ajman's prime locations</p>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="31" data-speed="1000"></h2>
-                  <p class="count-text ">For Rent<br>Currently Available</p>
+              <div class="feature-item">
+                <span class="feature-icon">🔷</span>
+                <div>
+                  <h4>International Standards</h4>
+                  <p>Global best practices in property management</p>
                 </div>
               </div>
-              <div class="col-lg-4">
-                <div class="counter">
-                  <h2 class="timer count-title count-number" data-to="557" data-speed="1000"></h2>
-                  <p class="count-text ">Successfull<br>Deals</p>
+              <div class="feature-item">
+                <span class="feature-icon">🔷</span>
+                <div>
+                  <h4>Exclusive Listings</h4>
+                  <p>Access to off-market properties</p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <span class="feature-icon">🔷</span>
+                <div>
+                  <h4>24/7 Support</h4>
+                  <p>Round-the-clock assistance</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section best-deal">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="section-heading">
-            <h6>| Best Deal</h6>
-            <h2>Find Your Best Deal Right Now!</h2>
+          
+          <div class="about-stats-grid">
+            <div class="about-stat-card">
+              <div class="about-stat-number">25+</div>
+              <div class="about-stat-label">Expert Agents</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-number">500+</div>
+              <div class="about-stat-label">Happy Clients</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-number">150+</div>
+              <div class="about-stat-label">Luxury Properties</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-number">8+</div>
+              <div class="about-stat-label">Years Experience</div>
+            </div>
           </div>
         </div>
-        <div class="col-lg-12">
-          <div class="tabs-content">
-            <div class="row">
-              <div class="nav-wrapper ">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="appartment-tab" data-bs-toggle="tab" data-bs-target="#appartment" type="button" role="tab" aria-controls="appartment" aria-selected="true">Appartment</button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="villa-tab" data-bs-toggle="tab" data-bs-target="#villa" type="button" role="tab" aria-controls="villa" aria-selected="false">Villa House</button>
-                  </li>
-                  <!-- <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="penthouse-tab" data-bs-toggle="tab" data-bs-target="#penthouse" type="button" role="tab" aria-controls="penthouse" aria-selected="false">Penthouse</button>
-                  </li> -->
-                </ul>
-              </div>              
-              <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="appartment" role="tabpanel" aria-labelledby="appartment-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>1,639 SQFT</span></li>
-                          <li>Building <span>Oasis Tower 1 - City View and Partial Creek View</span></li>
-                          <li>Number of rooms <span>2</span></li>
-                          <li>Parking Available <span>Yes (1 Parking Space)</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-01.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Property</h4>
-                      <p>Urgent Sale: A spacious 2-bedroom apartment is available in Oasis Tower 1, featuring a stunning city view and partial creek view. The unit offers a generous 1,468 sq. ft. layout with 2 bathrooms. The total sale price is AED 740,000, with a down payment of AED 242,000 and a remaining balance in GJ of AED 498,000. 
-                      <br><br>Additional costs include 2% land registration payable by the buyer, AED 4,250 for GJ registration, and AED 350 for the title deed. Maintenance charges are to be paid by the buyer starting from March. EMI payments are estimated to begin from March as well, ranging approximately between AED 8,000 to AED 9,000.</p>
-                      <div class="icon-button">
-                        <a href="tel:+971543612414"><i class="fa fa-calendar"></i> Schedule a visit</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="villa" role="tabpanel" aria-labelledby="villa-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>3,012 SQFT</span></li>
-                          <li>Villa <span>Luxurious 4 Bhk Villa in Yasmeen</span></li>
-                          <li>Number of rooms <span>4</span></li>
-                          <li>Parking Available <span>Yes (2 Parking Space)</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-02.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Property</h4>
-                      <p>Super luxurious 4 bedrooms and hall, majlis, all rooms are master with attached washrooms and Buiten cupboard. fitted American kitchen, all branded interior and good quality material.</p>
-                      <div class="icon-button">
-                        <a href="tel:+971543612414"><i class="fa fa-calendar"></i> Schedule a visit</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!--<div class="tab-pane fade" id="penthouse" role="tabpanel" aria-labelledby="penthouse-tab">
-                  <div class="row">
-                    <div class="col-lg-3">
-                      <div class="info-table">
-                        <ul>
-                          <li>Total Flat Space <span>320 m2</span></li>
-                          <li>Floor number <span>34th</span></li>
-                          <li>Number of rooms <span>6</span></li>
-                          <li>Parking Available <span>Yes</span></li>
-                          <li>Payment Process <span>Bank</span></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="col-lg-6">
-                      <img src="assets/images/deal-03.jpg" alt="">
-                    </div>
-                    <div class="col-lg-3">
-                      <h4>Extra Info About Penthouse</h4>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, do eiusmod tempor pack incididunt ut labore et dolore magna aliqua quised ipsum suspendisse. <br><br>Swag fanny pack lyft blog twee. JOMO ethical copper mug, succulents typewriter shaman DIY kitsch twee taiyaki fixie hella venmo after messenger poutine next level humblebrag swag franzen.</p>
-                      <div class="icon-button">
-                        <a href="tel:+971543612414"><i class="fa fa-calendar"></i> Schedule a visit</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>-->
-              </div>
-            </div>
+      </div>
+    </section>
+
+    <!-- AGENTS SECTION -->
+    <section class="clients-hero" id="agents">
+      <span class="hero-tagline">TRUSTED BY LEADERS</span>
+      <h2 style="font-size: 2.5rem; color: #fff; margin-top: 1rem;">What Our Clients Say</h2>
+    </section>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>"Black Diamond helped us secure a penthouse in Ajman that wasn't even on the public market yet."</p>
+        <div class="client-meta">
+          <img src="https://i.pravatar.cc/150?u=1" class="client-img" alt="Client">
+          <div class="client-info">
+            <h4>Ahmed Al-Maktoum</h4>
+            <span>CEO, Skyline Holdings</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>"The team made our international relocation seamless. From paperwork to finding the perfect villa."</p>
+        <div class="client-meta">
+          <img src="https://i.pravatar.cc/150?u=2" class="client-img" alt="Client">
+          <div class="client-info">
+            <h4>Sarah Jenkins</h4>
+            <span>Investment Consultant</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="quote-icon">“</div>
+        <p>"Finding a reliable broker in Ajman can be tough, but Black Diamond is the gold standard."</p>
+        <div class="client-meta">
+          <img src="https://i.pravatar.cc/150?u=3" class="client-img" alt="Client">
+          <div class="client-info">
+            <h4>Michael Chen</h4>
+            <span>Private Investor</span>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="properties section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-          <div class="section-heading text-center">
-            <h6>| Properties</h6>
-            <h2>We Provide The Best Property You Like</h2>
-          </div>
+    <!-- PROPERTIES SECTION -->
+    <div class="section-title" id="listings">
+      <h2>OUR PROPERTIES</h2>
+      <div class="click-badge" id="showMoreBtn">
+        <span>▼</span> click for multiple images <span>▼</span>
+      </div>
+    </div>
+
+    <!-- property grid - ALL 10 GALLERIES (G1 to G10) -->
+    <div class="property-grid">
+      <!-- Property 1 - Obsidian Penthouse (G1: 8 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Obsidian%20Penthouse" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/sdbQLw8F/2.jpg" alt="Obsidian Penthouse">
+        <div class="card-content">
+          <h3>Obsidian Penthouse</h3>
+          <div class="price">$2.45M</div>
+          <div class="address">12 Black Diamond Lane</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/CpN1pwX8/G1-A.jpg',
+            'https://i.ibb.co/RGVc3x4S/G1-B.jpg',
+            'https://i.ibb.co/Y4R5hXF8/G1-C.jpg',
+            'https://i.ibb.co/hFR5YTXc/G1-D.jpg',
+            'https://i.ibb.co/whv3vMDZ/G1-E.jpg',
+            'https://i.ibb.co/KzQ02Dfn/G1-F.jpg',
+            'https://i.ibb.co/tTxwnQyB/G1-G.jpg',
+            'https://i.ibb.co/qFdtgHwc/G1-H.jpg'
+          ])">▷ view gallery</button>
         </div>
       </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10976140.html"><img src="assets/images/property-01.jpg" alt=""></a>
-            <span class="category">Apartment - Sale</span>
-            <h6>AED 412,000</h6>
-            <h4><a href="https://www.bayut.com/property/details-10976140.html">Ajman Pearl Towers, Ajman Downtown, Ajman</a></h4>
-            <ul>
-              <li>Bedrooms: <span>2</span></li>
-              <li>Bathrooms: <span>2</span></li>
-              <li>Area: <span>1,286 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>Yes (1 Space)</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
+
+      <!-- Property 2 - Crystal Tower (G2: 9 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Crystal%20Tower" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/C5swccbx/1.jpg" alt="Crystal Tower">
+        <div class="card-content">
+          <h3>Crystal Tower</h3>
+          <div class="price">$2.85M</div>
+          <div class="address">45 Diamond Boulevard</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/Z1BHV7Cz/G2-A.jpg',
+            'https://i.ibb.co/LzLpRBBN/G2-B.jpg',
+            'https://i.ibb.co/p6jgGpZX/G2-C.jpg',
+            'https://i.ibb.co/YThXSqQJ/G2-D.jpg',
+            'https://i.ibb.co/Cpv1L17j/G2-E.jpg',
+            'https://i.ibb.co/B2sWttBR/G2-F.jpg',
+            'https://i.ibb.co/fYLhwWYQ/G2-G.jpg',
+            'https://i.ibb.co/RkBVKKdX/G2-H.jpg',
+            'https://i.ibb.co/3yFBPLj8/G2-I.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- Property 3 - Onyx Mansion (G3: 9 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Onyx%20Mansion" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/7JnNLtQv/3.jpg" alt="Onyx Mansion">
+        <div class="card-content">
+          <h3>Onyx Mansion</h3>
+          <div class="price">$4.20M</div>
+          <div class="address">88 Prestige Avenue</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/8nPBng53/G3-A.jpg',
+            'https://i.ibb.co/x8YsvHLW/G3-B.jpg',
+            'https://i.ibb.co/hRy3ydMk/G3-C.jpg',
+            'https://i.ibb.co/fdMfChzq/G3-D.jpg',
+            'https://i.ibb.co/FLpMXjhW/G3-E.jpg',
+            'https://i.ibb.co/fYsKNG6b/G3-F.jpg',
+            'https://i.ibb.co/x863JRXN/G3-G.jpg',
+            'https://i.ibb.co/N6jvD7tP/G3-H.jpg',
+            'https://i.ibb.co/XZGLnFt3/G3-I.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- Property 4 - Diamond Heights (G4: 7 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Diamond%20Heights" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/nqJYDDGV/5.jpg" alt="Diamond Heights">
+        <div class="card-content">
+          <h3>Diamond Heights</h3>
+          <div class="price">$1.95M</div>
+          <div class="address">123 Luxury Row</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/HLxDgpdJ/G4-A.jpg',
+            'https://i.ibb.co/JjSFs8QC/G4-B.jpg',
+            'https://i.ibb.co/DP7dQmBB/G4-C.jpg',
+            'https://i.ibb.co/Pv4fr988/G4-D.jpg',
+            'https://i.ibb.co/237tzB7Y/G4-E.jpg',
+            'https://i.ibb.co/WW6ZjT8N/G4-F.jpg',
+            'https://i.ibb.co/HDmpGBQs/G4-G.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- Property 5 - Graphite Villa (G5: 12 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Graphite%20Villa" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/q3vS6mJc/6.jpg" alt="Graphite Villa">
+        <div class="card-content">
+          <h3>Graphite Villa</h3>
+          <div class="price">$3.12M</div>
+          <div class="address">44 Carbon Court</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/1pjPsfc/G5-A.jpg',
+            'https://i.ibb.co/KcKwchBX/G5-B.jpg',
+            'https://i.ibb.co/kV1S2bqD/G5-C.jpg',
+            'https://i.ibb.co/Jj4Y5gtq/G5-D.jpg',
+            'https://i.ibb.co/BKjbp3dJ/G5-E.jpg',
+            'https://i.ibb.co/Vck7bPLm/G5-F.jpg',
+            'https://i.ibb.co/HpB49Gmg/G5-G.jpg',
+            'https://i.ibb.co/KpsyG7Xj/G5-H.jpg',
+            'https://i.ibb.co/dJxVFcLP/G5-I.jpg',
+            'https://i.ibb.co/twqvNmZB/G5-J.jpg',
+            'https://i.ibb.co/JwnZPCg9/G5-K.jpg',
+            'https://i.ibb.co/XkVTG2HJ/G5-L.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- Property 6 - Shard Residences (G6: 20 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%20interested%20in%20Shard%20Residences" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/fdgHcXSt/7.jpg" alt="Shard">
+        <div class="card-content">
+          <h3>Shard Residences</h3>
+          <div class="price">$1.98M</div>
+          <div class="address">90 Diamond Dust Ave</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/QRfNZzD/G6-B.jpg',
+            'https://i.ibb.co/kdWWmQg/G6-B.jpg',
+            'https://i.ibb.co/zWtZCpfS/G6-C.jpg',
+            'https://i.ibb.co/q3L0bj04/G6-D.jpg',
+            'https://i.ibb.co/6JgNF7jd/G6-E.jpg',
+            'https://i.ibb.co/Vcq6Rxth/G6-F.jpg',
+            'https://i.ibb.co/sJ3Fp96h/G6-G.jpg',
+            'https://i.ibb.co/LDQ5FTQB/G6-H.jpg',
+            'https://i.ibb.co/bRKzLG1d/G6-I.jpg',
+            'https://i.ibb.co/5gZB5sHF/G6-J.jpg',
+            'https://i.ibb.co/Q3pz6Nfj/G6-K.jpg',
+            'https://i.ibb.co/231761XC/G6-L.jpg',
+            'https://i.ibb.co/7xyPbcC4/G6-M.jpg',
+            'https://i.ibb.co/93GrqqR9/G6-N.jpg',
+            'https://i.ibb.co/ks76nqPH/G6-O.jpg',
+            'https://i.ibb.co/kgYkjMVT/G6-P.jpg',
+            'https://i.ibb.co/kVLv1Frs/G6-Q.jpg',
+            'https://i.ibb.co/7drnYPjG/G6-R.jpg',
+            'https://i.ibb.co/YFnrQFh1/G6-S.jpg',
+            'https://i.ibb.co/N6JMCbYq/G6-T.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- NEW Property 7 - Aether Loft (G7: 20 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Aether%20Loft" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/kVpmNGTX/8.jpg" alt="Aether Loft">
+        <div class="card-content">
+          <h3>Aether Loft</h3>
+          <div class="price">$2.99M</div>
+          <div class="address">7 Skyline Edge</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/zWtZCpfS/G6-C.jpg',
+            'https://i.ibb.co/6JgNF7jd/G6-E.jpg',
+            'https://i.ibb.co/sJ3Fp96h/G6-G.jpg',
+            'https://i.ibb.co/bRKzLG1d/G6-I.jpg',
+            'https://i.ibb.co/Q3pz6Nfj/G6-K.jpg',
+            'https://i.ibb.co/231761XC/G6-L.jpg',
+            'https://i.ibb.co/7xyPbcC4/G6-M.jpg',
+            'https://i.ibb.co/93GrqqR9/G6-N.jpg',
+            'https://i.ibb.co/ks76nqPH/G6-O.jpg',
+            'https://i.ibb.co/kgYkjMVT/G6-P.jpg',
+            'https://i.ibb.co/kVLv1Frs/G6-Q.jpg',
+            'https://i.ibb.co/7drnYPjG/G6-R.jpg',
+            'https://i.ibb.co/YFnrQFh1/G6-S.jpg',
+            'https://i.ibb.co/N6JMCbYq/G6-T.jpg',
+            'https://i.ibb.co/QRfNZzD/G6-B.jpg',
+            'https://i.ibb.co/kdWWmQg/G6-B.jpg',
+            'https://i.ibb.co/q3L0bj04/G6-D.jpg',
+            'https://i.ibb.co/Vcq6Rxth/G6-F.jpg',
+            'https://i.ibb.co/LDQ5FTQB/G6-H.jpg',
+            'https://i.ibb.co/5gZB5sHF/G6-J.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- NEW Property 8 - Velvet Mansion (G8: 38 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Velvet%20Mansion" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/fzCjmm52/9.jpg" alt="Velvet Mansion">
+        <div class="card-content">
+          <h3>Velvet Mansion</h3>
+          <div class="price">$5.75M</div>
+          <div class="address">200 Platinum Row</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/fzLS2Wgd/G7-W.jpg', 'https://i.ibb.co/FktQGHrN/G8-A.jpg', 'https://i.ibb.co/gLCW594n/G8-AA.jpg',
+            'https://i.ibb.co/jkg5Fq3X/G8-AB.jpg', 'https://i.ibb.co/Y4v4XK2f/G8-AC.jpg', 'https://i.ibb.co/qF7hrdxn/G8-AD.jpg',
+            'https://i.ibb.co/5XLMmkkv/G8-AE.jpg', 'https://i.ibb.co/fG1Yqbpt/G8-AF.jpg', 'https://i.ibb.co/HTtGNDR6/G8-AG.jpg',
+            'https://i.ibb.co/cKmZj7Hk/G8-AH.jpg', 'https://i.ibb.co/KpwHfSr5/G8-AI.jpg', 'https://i.ibb.co/Fk8HBGh4/G8-AJ.jpg',
+            'https://i.ibb.co/S4th6S2x/G8-AL.jpg', 'https://i.ibb.co/whQMMfnk/G8-AM.jpg', 'https://i.ibb.co/7x3QKx8v/G8-AS.jpg',
+            'https://i.ibb.co/YBrSRp8Y/G8-B.jpg', 'https://i.ibb.co/gLptX8Hk/G8-C.jpg', 'https://i.ibb.co/4R4QWNmP/G8-D.jpg',
+            'https://i.ibb.co/gZdgyDXJ/G8-E.jpg', 'https://i.ibb.co/3Y0Nr8sp/G8-F.jpg', 'https://i.ibb.co/WWzsvVPg/G8-G.jpg',
+            'https://i.ibb.co/chXJNV4g/G8-H.jpg', 'https://i.ibb.co/jv5PWdqk/G8-L.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- NEW Property 9 - Sapphire Estate (G9: 46 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Sapphire%20Estate" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/KzbrDVnf/10.jpg" alt="Sapphire Estate">
+        <div class="card-content">
+          <h3>Sapphire Estate</h3>
+          <div class="price">$6.90M</div>
+          <div class="address">1 Blue Jewel Way</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/gML3m8Q0/G9-A.jpg', 'https://i.ibb.co/spcBDzLB/G9-AA.jpg', 'https://i.ibb.co/b5tjC8Ry/G9-AB.jpg',
+            'https://i.ibb.co/ksLjvpbk/G9-AC.jpg', 'https://i.ibb.co/P3gb63S/G9-AD.jpg', 'https://i.ibb.co/Kc6Z32M4/G9-AE.jpg',
+            'https://i.ibb.co/Zp1ZrZXB/G9-AF.jpg', 'https://i.ibb.co/TBcV9V3x/G9-AG.jpg', 'https://i.ibb.co/whCTTkch/G9-AH.jpg',
+            'https://i.ibb.co/84QFbwCv/G9-AI.jpg', 'https://i.ibb.co/tMkjKK5L/G9-AJ.jpg', 'https://i.ibb.co/20FsDyZv/G9-AK.jpg',
+            'https://i.ibb.co/gFt57KK8/G9-AL.jpg', 'https://i.ibb.co/qGwG0WM/G9-AM.jpg', 'https://i.ibb.co/Lh8Xvfbx/G9-AN.jpg',
+            'https://i.ibb.co/wN5tgtf0/G9-AO.jpg', 'https://i.ibb.co/0RmHWxYX/G9-AP.jpg', 'https://i.ibb.co/yc34wLH9/G9-AQ.jpg',
+            'https://i.ibb.co/gLDns7GF/G9-AR.jpg', 'https://i.ibb.co/nqz5KLyS/G9-AS.jpg', 'https://i.ibb.co/1t0dsLVP/G9-AT.jpg',
+            'https://i.ibb.co/3Yp26Vwp/G9-AU.jpg', 'https://i.ibb.co/ycWQD1MG/G9-B.jpg', 'https://i.ibb.co/23wbzrsN/G9-C.jpg',
+            'https://i.ibb.co/fG1X9p9m/G9-D.jpg', 'https://i.ibb.co/v66tFRky/G9-E.jpg', 'https://i.ibb.co/JR1Stjr6/G9-F.jpg',
+            'https://i.ibb.co/jvZPxK9s/G9-G.jpg', 'https://i.ibb.co/4RsggkHs/G9-H.jpg', 'https://i.ibb.co/99Nf35vR/G9-I.jpg',
+            'https://i.ibb.co/W4N9WMfr/G9-J.jpg', 'https://i.ibb.co/tp1tLJh6/G9-K.jpg', 'https://i.ibb.co/Z60J9b4y/G9-L.jpg',
+            'https://i.ibb.co/675FPGTH/G9-M.jpg', 'https://i.ibb.co/zgG3KhP/G9-N.jpg', 'https://i.ibb.co/3ypXsQmY/G9-O.jpg',
+            'https://i.ibb.co/PGq51PBX/G9-P.jpg', 'https://i.ibb.co/c926h16/G9-Q.jpg', 'https://i.ibb.co/bRQ0xPTR/G9-R.jpg',
+            'https://i.ibb.co/YFBtZJ65/G9-S.jpg', 'https://i.ibb.co/8DLNyYyC/G9-T.jpg', 'https://i.ibb.co/2YnkDwzW/G9-U.jpg',
+            'https://i.ibb.co/yFSJQKDk/G9-V.jpg', 'https://i.ibb.co/ycGwRQGx/G9-W.jpg', 'https://i.ibb.co/fdsvyyP2/G9-X.jpg',
+            'https://i.ibb.co/F4crg2D7/G9-Y.jpg', 'https://i.ibb.co/jP78HjRK/G9-Z.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+
+      <!-- NEW Property 10 - Onyx Sky Villa (G10: 11 images) -->
+      <div class="property-card">
+        <a class="whatsapp-overlay" href="https://wa.me/18887407246?text=Hello%2C%20interested%20in%20Onyx%20Sky%20Villa" target="_blank">
+          <svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA
+        </a>
+        <img class="card-img" src="https://i.ibb.co/sdbQLw8F/2.jpg" alt="Onyx Sky Villa">
+        <div class="card-content">
+          <h3>Onyx Sky Villa</h3>
+          <div class="price">$3.45M</div>
+          <div class="address">10 Eclipse Terrace</div>
+          <button class="view-btn" onclick="openGallery([
+            'https://i.ibb.co/N6DKXC9M/G10-A.jpg', 'https://i.ibb.co/PZP4p0Gw/G10-B.jpg', 'https://i.ibb.co/G4YDx9nw/G10-C.jpg',
+            'https://i.ibb.co/9mT1ctLv/G10-D.jpg', 'https://i.ibb.co/C5wtHg5D/G10-E.jpg', 'https://i.ibb.co/20tF7FLV/G10-F.jpg',
+            'https://i.ibb.co/C3TgNP2q/G10-G.jpg', 'https://i.ibb.co/N2gGW09h/G10-H.jpg', 'https://i.ibb.co/FkCmmT10/G10-I.jpg',
+            'https://i.ibb.co/v4rWQKvf/G10-J.jpg', 'https://i.ibb.co/YFHsfc95/G10-K.jpg'
+          ])">▷ view gallery</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- extra panel (unchanged) -->
+    <div class="extra-images-panel" id="extraPanel">
+      <div class="extra-card"><img src="https://i.ibb.co/C5swccbx/1.jpg" alt="pool"><p>pool side</p><a class="extra-wa" href="https://wa.me/18887407246?text=Hello%20pool%20side" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA</a></div>
+      <div class="extra-card"><img src="https://i.ibb.co/sdbQLw8F/2.jpg" alt="night"><p>night view</p><a class="extra-wa" href="https://wa.me/18887407246?text=Hello%20night%20view" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA</a></div>
+      <div class="extra-card"><img src="https://i.ibb.co/7JnNLtQv/3.jpg" alt="terrace"><p>terrace</p><a class="extra-wa" href="https://wa.me/18887407246?text=Hello%20terrace" target="_blank"><svg viewBox="0 0 24 24"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.33 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/><path d="M16.8 13.8c-.26-.13-1.53-.75-1.77-.84-.24-.09-.41-.13-.58.13-.17.26-.67.84-.82 1.01-.15.17-.3.19-.56.06-.26-.13-1.11-.41-2.11-1.3-.78-.7-1.31-1.56-1.46-1.82-.15-.26-.02-.4.11-.53.11-.11.26-.3.39-.45.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.45-.06-.13-.58-1.4-.8-1.92-.21-.51-.42-.44-.58-.45h-.5c-.17 0-.45.06-.68.32-.23.26-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.72 4.31 3.73.6.24 1.07.38 1.44.49.6.18 1.15.15 1.58.09.48-.06 1.53-.62 1.75-1.22.22-.6.22-1.11.15-1.22-.07-.1-.24-.15-.5-.27z"/></svg> WA</a></div>
+    </div>
+
+    <div class="click-message" id="clickMessage">
+      ⚡ additional images loaded <span>3 per row · WA available</span>
+    </div>
+  </div>
+
+  <!-- MAP SECTION -->
+  <section class="map-section" id="contact">
+    <div class="container" style="padding-top:0; padding-bottom:0;">
+      <div class="map-container">
+        <div class="map-info">
+          <h2>Visit Our Office</h2>
+          <div class="map-details">
+            <div><span>📍</span> Al Rashidiya 1, Ajman, UAE</div>
+            <div><span>📞</span> +971 054 361 2414</div>
+            <div><span>✉️</span> blackdiamondajm@gmail.com </div>
+            <div><span>🕒</span> Mon - Sat: 9:00 AM - 8:00 PM</div>
+          </div>
+          <a href="https://goo.gl/maps/YOUR_MAP_LINK" target="_blank" class="hero-btn primary" style="width: fit-content;">GET DIRECTIONS</a>
+        </div>
+        <div class="map-frame">
+          <iframe class="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3604.288289569736!2d55.44525897610116!3d25.40432322240974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f58334407886b%3A0x6e7b6d195655555!2sAl%20Rashidiya%201%20-%20Ajman!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-area" style="margin-bottom: 1.5rem;">
+          <span class="diamond-big">⬥</span>
+          <div class="logo-text">BLACK DIAMOND</div>
+        </div>
+        <p>Premium real estate services in Ajman. We specialize in luxury villas, modern apartments, and high-yield investment properties.</p>
+        <div class="social-stack">
+          <a href="#" class="social-circle" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="#" class="social-circle" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+          <a href="#" class="social-circle" title="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31 0 2.591.21 3.793.627v4.965c-.713-.19-1.46-.291-2.228-.291-.561 0-1.089.105-1.571.302v4.406h5.503c.151 0 .298.015.44.044v5.033c-.142-.03-.289-.044-.44-.044h-5.503v5.013c0 1.933-1.567 3.5-3.5 3.5s-3.5-1.567-3.5-3.5 1.567-3.5 3.5-3.5c.561 0 1.089.105 1.571.302V0h1.938z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#listings">Properties Grid</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#agents">Client Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Neighborhoods</h4>
+        <ul class="footer-links">
+          <li><a href="#">Al Rashidiya 1</a></li>
+          <li><a href="#">Downtown Ajman</a></li>
+          <li><a href="#">Ajman Corniche</a></li>
+          <li><a href="#">Al Rawda</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Get In Touch</h4>
+        <div class="contact-info-block">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div class="contact-text">
+              <h5>Business Address</h5>
+              <p>DIAMOND REAL ESTATE LLC<br>Ajman - Al Rashidiya 1 - Ajman</p>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10658331.html"><img src="assets/images/property-02.jpg" alt=""></a>
-            <span class="category">Villa - Sale</span>
-            <h6>AED 1,352,000</h6>
-            <h4><a href="https://www.bayut.com/property/details-10658331.html">Luxurious Villa, Yasmeen, Ajman</a></h4>
-            <ul>
-              <li>Bedrooms: <span>4</span></li>
-              <li>Bathrooms: <span>5</span></li>
-              <li>Area: <span>3,012 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>Yes (2 Space)</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div class="contact-text">
+              <h5>Phone Number</h5>
+              <a href="tel:0543612414">054 361 2414</a>
             </div>
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10963402.html"><img src="assets/images/property-03.jpg" alt=""></a>
-            <span class="category">Apartment - Sale</span>
-            <h6>AED 362,000</h6>
-            <h4><a href="https://www.bayut.com/property/details-10963402.html">City Tower, Al Nuaimiya 3, Al Nuaimiya, Ajman</a></h4>
-            <ul>
-              <li>Bedrooms: <span>1</span></li>
-              <li>Bathrooms: <span>2</span></li>
-              <li>Area: <span>857 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>Yes (1 Space)</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10895885.html"><img src="assets/images/property-04.jpg" alt=""></a>
-            <span class="category">Apartment - Rent</span>
-            <h6>AED 45,000 Yearly</h6>
-            <h4><a href="https://www.bayut.com/property/details-10895885.html">Ajman One Tower 1, Al Rashidiya 3, Al Rashidiya, Ajman</a></h4>
-            <ul>
-              <li>Bedrooms: <span>2</span></li>
-              <li>Bathrooms: <span>3</span></li>
-              <li>Area: <span>1,467 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>Yes (1 Space)</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10887876.html"><img src="assets/images/property-05.jpg" alt=""></a>
-            <span class="category">Apartment - Rent</span>
-            <h6>AED 37,000 Yearly</h6>
-            <h4><a href="https://www.bayut.com/property/details-10887876.html">Al Rashidiya Towers, Al Rashidiya, Ajman</a></h4>
-            <ul>
-              <li>Bedrooms: <span>2</span></li>
-              <li>Bathrooms: <span>2</span></li>
-              <li>Area: <span>1,555 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>No</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <div class="item">
-            <a href="https://www.bayut.com/property/details-10152854.html"><img src="assets/images/property-06.jpg" alt=""></a>
-            <span class="category">Office - Sale</span>
-            <h6>AED 337,000</h6>
-            <h4><a href="https://www.bayut.com/property/details-10152854.html">Falcon Towers B1, Al Rashidiya 2, Ajman</a></h4>
-            <ul>
-              <li>Kitchen: <span>Shared Kitchen</span></li>
-              <li>Prayer Room: <span>Yes</span></li>
-              <li>Area: <span>1,140 SQFT</span></li>
-              <li>Balcony: <span>Yes</span></li>
-              <li>Parking: <span>No</span></li>
-            </ul>
-            <div class="main-button">
-              <a href="tel:+971543612414">Schedule a visit</a>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-text">
+              <h5>Business Email</h5>
+              <a href="mailto:sheikhnasirbd2025@gmail.com">sheikhnasirbd2025@gmail.com</a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="contact section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 offset-lg-4">
-          <div class="section-heading text-center">
-            <h6>| Contact Us</h6>
-            <h2>Get In Touch With Our Agents</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="contact-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-7">
-          <div id="map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4378.686991523678!2d55.45429789999999!3d25.3940593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5836cdd2bd3d%3A0x15fc804cb1ac393d!2sDIAMOND%20REAL%20ESTATE%20LLC!5e1!3m2!1sen!2sae!4v1748705409636!5m2!1sen!2sae" width="100%" height="500px" frameborder="0" style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);" allowfullscreen=""></iframe>
-          </div>
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="item phone">
-                <img src="assets/images/phone-icon.png" alt="" style="max-width: 52px;">
-                <h6>054 361 2414<br><span>Phone Number</span></h6>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="item email">
-                <img src="assets/images/email-icon.png" alt="" style="max-width: 52px;">
-                <h6>blackdiamondajm@gmail.com<br><span>Business Email</span></h6>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-5">
-          <form id="contact-form" action="" method="post">
-            <div class="row">
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="name">Full Name</label>
-                  <input type="name" name="name" id="name" placeholder="Your Name..." autocomplete="on" required>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="email">Email Address</label>
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your E-mail..." required="">
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="subject">Subject</label>
-                  <input type="subject" name="subject" id="subject" placeholder="Subject..." autocomplete="on" >
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <label for="message">Message</label>
-                  <textarea name="message" id="message" placeholder="Your Message"></textarea>
-                </fieldset>
-              </div>
-              <div class="col-lg-12">
-                <fieldset>
-                  <button type="submit" id="form-submit" class="orange-button">Send Message</button>
-                </fieldset>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        
-        
-        <div class="col-lg-12">
-          <div class="col-lg-7 d-flex justify-content-end align-items-center">
-            <div style="display: flex; gap: 20px;">
-              <div>
-                <img src="assets/images/whatsappQR.png" alt="WhatsApp QR" style="width: 80px; padding-top: 50px;">
-              </div>
-              <div>
-                <img src="assets/images/locationQR.png" alt="Location QR" style="width: 80px; padding-top: 50px;">
-              </div>
-              <div>
-                <img src="assets/images/qrcall.png" alt="Website QR" style="width: 80px; padding-top: 50px;">
-              </div>
-            </div>
-          </div>
-
-
-          <p>
-            Copyright © 2025 Black Diamond Real Estate. All rights reserved.  
-            Design: <a rel="nofollow" href="https://azoneprojects.com" target="_blank">Azone Projects</a>
-          </p>
-        </div>
-      </div>
+    <div class="bottom-bar">
+      <p>© 2025 DIAMOND REAL ESTATE LLC. All rights reserved.</p>
+      <p>Luxury Living • Expert Advice • Trusted Partner</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/js/isotope.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/counter.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <!-- GALLERY MODAL -->
+  <div class="gallery-modal" id="galleryModal">
+    <div class="gallery-content">
+      <span class="gallery-close" onclick="closeGallery()">&times;</span>
+      <img class="gallery-image" id="galleryImage" src="" alt="Gallery">
+      <div class="gallery-nav gallery-prev" onclick="changeImage(-1)">❮</div>
+      <div class="gallery-nav gallery-next" onclick="changeImage(1)">❯</div>
+      <div class="gallery-counter" id="galleryCounter"></div>
+    </div>
+  </div>
 
-  </body>
+  <!-- smooth scroll -->
+  <style>html{scroll-behavior:smooth;}</style>
+  
+  <!-- JAVASCRIPT -->
+  <script>
+    // Gallery Functions
+    let currentImages = [];
+    let currentIndex = 0;
+
+    function openGallery(images) {
+      currentImages = images;
+      currentIndex = 0;
+      updateGalleryImage();
+      document.getElementById('galleryModal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      document.getElementById('galleryModal').classList.remove('show');
+      document.body.style.overflow = 'auto';
+    }
+
+    function changeImage(direction) {
+      currentIndex += direction;
+      if (currentIndex < 0) currentIndex = currentImages.length - 1;
+      if (currentIndex >= currentImages.length) currentIndex = 0;
+      updateGalleryImage();
+    }
+
+    function updateGalleryImage() {
+      const img = document.getElementById('galleryImage');
+      img.src = currentImages[currentIndex];
+      document.getElementById('galleryCounter').textContent = 
+        `${currentIndex + 1} / ${currentImages.length}`;
+    }
+
+    // Close with ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeGallery();
+      }
+    });
+
+    // Extra Panel Toggle
+    (function() {
+      const showBtn = document.getElementById('showMoreBtn');
+      const extraPanel = document.getElementById('extraPanel');
+      const msgDiv = document.getElementById('clickMessage');
+
+      if (showBtn) {
+        showBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          extraPanel.classList.toggle('show-extra');
+          if (extraPanel.classList.contains('show-extra')) {
+            msgDiv.classList.add('show-message');
+          } else {
+            msgDiv.classList.remove('show-message');
+          }
+        });
+      }
+    })();
+  </script>
+</body>
 </html>
