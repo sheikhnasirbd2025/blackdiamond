@@ -1761,7 +1761,43 @@
       ⚡ additional images loaded <span>3 per row · WA available</span>
     </div>
   </div>
-
+	
+	<!-- ========== 3 BARCODES SECTION (WhatsApp, Location, Contact) ========== -->
+  <div class="barcodes-section" style="max-width: 1280px; margin: 3rem auto 2rem; padding: 2rem; background: linear-gradient(135deg, #0f151b 0%, #1a242d 100%); border-radius: 40px; border: 1px solid #283a44;">
+    <div class="section-title" style="margin-bottom: 1.5rem; text-align: center; display: flex; flex-direction: column; align-items: center;">
+      <h2 style="font-size: 2rem; font-weight: 400; color: #fff; border-left: 5px solid #608aa3; padding-left: 1rem; background: linear-gradient(90deg, #1f2b33 0%, transparent 100%); display: inline-block;">📱 Scan & Connect</h2>
+      <p style="color: #b0c4d9; margin-top: 0.8rem; font-size: 0.95rem;">Scan any QR code to instantly chat, find us, or save contact details</p>
+    </div>
+    <div class="barcode-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1.5rem;">
+      <!-- 1. WHATSAPP BARCODE -->
+      <div class="barcode-card" style="background: #171e24; border-radius: 24px; padding: 1.8rem 1.5rem; text-align: center; border: 1px solid #2f3f4b;">
+        <div class="barcode-icon" style="font-size: 2.5rem; margin-bottom: 0.8rem;">💬</div>
+        <h3 style="color: #d8ecff; font-size: 1.3rem; margin-bottom: 0.5rem;">WhatsApp</h3>
+        <p style="color: #8d9ca8; font-size: 0.9rem; margin-bottom: 1.2rem;">Scan to chat & inquire about properties</p>
+        <div id="whatsappQr" style="display: flex; justify-content: center; margin: 1rem 0;"></div>
+        <div class="scan-hint" style="color: #608aa3; font-size: 0.8rem; margin-top: 0.8rem;">📲 Opens WhatsApp instantly</div>
+      </div>
+      <!-- 2. LOCATION BARCODE -->
+      <div class="barcode-card" style="background: #171e24; border-radius: 24px; padding: 1.8rem 1.5rem; text-align: center; border: 1px solid #2f3f4b;">
+        <div class="barcode-icon" style="font-size: 2.5rem; margin-bottom: 0.8rem;">📍</div>
+        <h3 style="color: #d8ecff; font-size: 1.3rem; margin-bottom: 0.5rem;">Our Location</h3>
+        <p style="color: #8d9ca8; font-size: 0.9rem; margin-bottom: 1.2rem;">Horizon Tower, Al Rashidiya 1, Ajman</p>
+        <div id="locationQr" style="display: flex; justify-content: center; margin: 1rem 0;"></div>
+        <div class="scan-hint" style="color: #608aa3; font-size: 0.8rem; margin-top: 0.8rem;">🗺️ Opens Google Maps navigation</div>
+      </div>
+      <!-- 3. CONTACT DETAILS BARCODE -->
+      <div class="barcode-card" style="background: #171e24; border-radius: 24px; padding: 1.8rem 1.5rem; text-align: center; border: 1px solid #2f3f4b;">
+        <div class="barcode-icon" style="font-size: 2.5rem; margin-bottom: 0.8rem;">📇</div>
+        <h3 style="color: #d8ecff; font-size: 1.3rem; margin-bottom: 0.5rem;">Contact Details</h3>
+        <p style="color: #8d9ca8; font-size: 0.9rem; margin-bottom: 1.2rem;">Save phone & email to your device</p>
+        <div id="contactQr" style="display: flex; justify-content: center; margin: 1rem 0;"></div>
+        <div class="scan-hint" style="color: #608aa3; font-size: 0.8rem; margin-top: 0.8rem;">📞 vCard: +971 54 361 2414</div>
+      </div>
+    </div>
+    <div class="divider" style="height: 1px; background: linear-gradient(90deg, transparent, #2f4957, transparent); margin: 2rem 0 1rem;"></div>
+    <p style="text-align: center; font-size: 0.75rem; color: #678696; margin-top: 1rem;">Scan any code with your phone camera — instant access to Black Diamond Real Estate</p>
+  </div>
+  
   <!-- MAP SECTION -->
   <section class="map-section" id="contact">
     <div class="container" style="padding-top:0; padding-bottom:0;">
@@ -1866,8 +1902,8 @@
   <!-- smooth scroll -->
   <style>html{scroll-behavior:smooth;}</style>
   
-  <!-- JAVASCRIPT -->
-  <script>
+ <!-- JAVASCRIPT -->
+    <script>
     // Gallery Functions
     let currentImages = [];
     let currentIndex = 0;
@@ -1894,9 +1930,11 @@
 
     function updateGalleryImage() {
       const img = document.getElementById('galleryImage');
-      img.src = currentImages[currentIndex];
-      document.getElementById('galleryCounter').textContent = 
-        `${currentIndex + 1} / ${currentImages.length}`;
+      if (img && currentImages.length > 0) {
+        img.src = currentImages[currentIndex];
+        document.getElementById('galleryCounter').textContent = 
+          `${currentIndex + 1} / ${currentImages.length}`;
+      }
     }
 
     // Close with ESC key
@@ -1924,6 +1962,111 @@
         });
       }
     })();
+
+    // ========== QR CODE GENERATION ==========
+    function generateQRCodes() {
+      // Make sure the elements exist
+      if (!document.getElementById('whatsappQr')) {
+        console.log('QR elements not found yet');
+        return;
+      }
+      
+      // Check if QRCode library is loaded
+      if (typeof QRCode === 'undefined') {
+        console.log('QRCode library not loaded yet');
+        return;
+      }
+      
+      try {
+        // 1. WhatsApp QR - Correct UAE number
+        var whatsappNumber = '971543612414';
+        var whatsappMessage = 'Hello%2C%20I%27m%20interested%20in%20your%20property%20listing';
+        var whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + whatsappMessage;
+        
+        var whatsappQrDiv = document.getElementById('whatsappQr');
+        if (whatsappQrDiv) {
+          whatsappQrDiv.innerHTML = '';
+          new QRCode(whatsappQrDiv, {
+            text: whatsappUrl,
+            width: 120,
+            height: 120,
+            colorDark: '#c27e2e',
+            colorLight: '#171e24'
+          });
+        }
+        
+        // 2. Location QR - Google Maps
+        var locationAddress = '409-D%2C%20HORIZON%20TOWER%2C%20Al%20Rashidiya%201%2C%20Ajman%2C%20UAE';
+        var locationUrl = 'https://www.google.com/maps/search/?api=1&query=' + locationAddress;
+        
+        var locationQrDiv = document.getElementById('locationQr');
+        if (locationQrDiv) {
+          locationQrDiv.innerHTML = '';
+          new QRCode(locationQrDiv, {
+            text: locationUrl,
+            width: 120,
+            height: 120,
+            colorDark: '#c27e2e',
+            colorLight: '#171e24'
+          });
+        }
+        
+        // 3. Contact QR - vCard format
+        var vCardData = 'BEGIN:VCARD\n' +
+          'VERSION:3.0\n' +
+          'FN:Black Diamond Real Estate\n' +
+          'ORG:Black Diamond Real Estate LLC\n' +
+          'TEL;TYPE=WORK,VOICE:+971543612414\n' +
+          'TEL;TYPE=CELL:+971543612414\n' +
+          'EMAIL:realestateblackdiamond@gmail.com\n' +
+          'ADR;TYPE=WORK:;;409-D HORIZON TOWER;Al Rashidiya 1;Ajman;;UAE\n' +
+          'URL:https://blackdiamondrealestate.ae\n' +
+          'END:VCARD';
+        
+        var contactQrDiv = document.getElementById('contactQr');
+        if (contactQrDiv) {
+          contactQrDiv.innerHTML = '';
+          new QRCode(contactQrDiv, {
+            text: vCardData,
+            width: 120,
+            height: 120,
+            colorDark: '#c27e2e',
+            colorLight: '#171e24'
+          });
+        }
+        
+        console.log('QR Codes generated successfully!');
+      } catch(e) {
+        console.log('Error generating QR codes:', e);
+      }
+    }
+    
+    // Load QR library and generate codes
+    function loadQRCode() {
+      // Check if QRCode is already loaded
+      if (typeof QRCode !== 'undefined') {
+        generateQRCodes();
+        return;
+      }
+      
+      // Load the QR library
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js';
+      script.onload = function() {
+        setTimeout(generateQRCodes, 200);
+      };
+      script.onerror = function() {
+        console.log('Failed to load QR library');
+      };
+      document.head.appendChild(script);
+    }
+    
+    // Run when page is fully loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadQRCode);
+    } else {
+      loadQRCode();
+    }
   </script>
 </body>
 </html>
